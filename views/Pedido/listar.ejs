@@ -1,0 +1,43 @@
+<link rel="/css/print.css"></link>
+<script src="/js/Pedido/listar.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<div>
+    <h1>Pedidos</h1>
+    <div class="no-print">
+        <input id="txtFiltro" class="form-control" type="text" placeholder="Filtre pelo ID do pedido ou nome do produto" ></input>
+        <br>
+        <button id="btnFiltrar" class="btn btn-primary"><i class="fas fa-search"></i> Buscar</button>
+        <button id="btnExcel" class="btn btn-success"><i class="fas fa-file"></i> Exportar Excel</button>
+        <button id="btnPdf" class="btn btn-secondary"><i class="fas fa-file"></i> Exportar PDF</button>
+        <br>
+    </div>
+    <br>
+    <div>
+        <table id="tabelaPedidos" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ped. ID</th>
+                    <th>Data do pedido</th>
+                    <th>Valor do pedido</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Valor unitário</th>                   
+                    <th>Valor total do produto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i<lista.length;i++) { %>
+                    <tr>
+                        <td><%= lista[i].pedidoId %></td>
+                        <td><%= new Date(lista[i].pedidoData).toLocaleString() %></td>
+                        <td><%= lista[i].pedidoValorTotal %></td>
+                        <td><%= lista[i].produtoNome %></td>
+                        <td><%= lista[i].itemQuantidade %></td>
+                        <td><%= lista[i].itemValorUnidade %></td>
+                        <td><%= lista[i].itemValorTotal %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
